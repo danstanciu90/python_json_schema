@@ -1,0 +1,70 @@
+{
+  "$defs": {
+    "PowerCurveMode": {
+      "enum": [
+        "default",
+        "custom",
+        "low_noise",
+        "low_speed",
+        "high_speed"
+      ],
+      "title": "PowerCurveMode",
+      "type": "string"
+    },
+    "WindSpeed": {
+      "properties": {
+        "min": {
+          "description": "Minimum wind speed in m/s",
+          "title": "Min",
+          "type": "integer"
+        },
+        "max": {
+          "description": "Maximum wind speed in m/s",
+          "title": "Max",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ],
+      "title": "WindSpeed",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "wind_speed": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/WindSpeed"
+        }
+      ],
+      "description": "Wind speed range in m/s"
+    },
+    "power": {
+      "description": "Power in kW",
+      "examples": [
+        100,
+        200,
+        300
+      ],
+      "title": "Power",
+      "type": "integer"
+    },
+    "modes": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/PowerCurveMode"
+        }
+      ],
+      "default": "low_noise",
+      "description": "Power curve mode"
+    }
+  },
+  "required": [
+    "wind_speed",
+    "power"
+  ],
+  "title": "PowerCurve",
+  "type": "object"
+}
