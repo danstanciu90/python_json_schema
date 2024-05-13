@@ -7,7 +7,7 @@ The project uses [`Poetry`]((https://python-poetry.org/docs/)) for dependency ma
 creating a consistent virtual env across multiple devices, ensuring better collaboration on the
 project.
 
->> Poetry requires python 3.8+
+> Poetry requires python 3.8+
 
 ### Python
 You need to have python installed on your machine, version 3.8 or above to ensure compatibility with
