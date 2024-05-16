@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from enum import Enum
 import json
+import jsonref
 
 class WindSpeed(BaseModel):
     min: int = Field(..., description="Minimum wind speed in m/s")
@@ -19,8 +20,8 @@ class PowerCurve(BaseModel):
     modes: PowerCurveMode = Field(description="Power curve mode", default="low_noise")
 
 
-schema = PowerCurve.model_json_schema()
+schema = jsonref.replace_refs(PowerCurve.model_json_schema())
 print(json.dumps(schema, indent=2))
 
-with open('json_schemas/power_curve_schema.json', 'w', encoding='utf-8') as out_file:
+with open('main_schema.json', 'w', encoding='utf-8') as out_file:
     json.dump(schema, out_file, indent=2)

@@ -36,7 +36,24 @@
     "wind_speed": {
       "allOf": [
         {
-          "$ref": "#/$defs/WindSpeed"
+          "properties": {
+            "min": {
+              "description": "Minimum wind speed in m/s",
+              "title": "Min",
+              "type": "integer"
+            },
+            "max": {
+              "description": "Maximum wind speed in m/s",
+              "title": "Max",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "title": "WindSpeed",
+          "type": "object"
         }
       ],
       "description": "Wind speed range in m/s"
@@ -54,7 +71,15 @@
     "modes": {
       "allOf": [
         {
-          "$ref": "#/$defs/PowerCurveMode"
+          "enum": [
+            "default",
+            "custom",
+            "low_noise",
+            "low_speed",
+            "high_speed"
+          ],
+          "title": "PowerCurveMode",
+          "type": "string"
         }
       ],
       "default": "low_noise",
